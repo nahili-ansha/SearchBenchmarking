@@ -35,12 +35,40 @@ public class SearchBenchmark
     }
     public static int LinearSearch(int[] arr, int target)
     {
-        throw new NotImplementedException();
+        for(int i = 0; i < arr.Length; i++)
+        {
+            if(arr[i] == target)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public static int BinarySearch(int[] arr, int target)
     {
-        throw new NotImplementedException();
+        int left = 0;
+        int right = arr.Length - 1;
+        int middle = left + (right - left) / 2;
+
+        while(left <= right)
+        {
+            if(arr[middle] == target)
+            {
+                return middle;
+            }
+            if(target < arr[middle])
+            {
+                right = middle - 1;
+                middle = left + (right - left) / 2;
+            }
+            if(target > arr[middle])
+            {
+                left = middle + 1;
+            }
+
+        }
+        return -1;
     }
 
 }
